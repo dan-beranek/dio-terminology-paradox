@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The DIO Terminology Paradox — Edge Case Presentation</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --fg: #111;
+    --fg2: #444;
+    --fg3: #777;
+    --border: #ddd;
+    --accent: #2563eb;
+    --danger: #dc2626;
+    --warning: #f59e0b;
+    --positive: #16a34a;
+    --muted: #f3f4f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0a0a;
+      --fg: #eee;
+      --fg2: #aaa;
+      --fg3: #666;
+      --border: #333;
+      --muted: #1a1a1a;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    padding: 24px;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar a {
+    color: var(--fg3);
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .topbar a:hover { color: var(--fg); border-color: var(--fg2); }
+  .slide { display: none; animation: fadeIn 0.3s ease; }
+  .slide.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
+  h2 { font-size: 20px; font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
+  .subtitle { color: var(--fg2); font-size: 15px; margin-bottom: 24px; }
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+    background: transparent;
+  }
+  .card-title { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+  .card-body { color: var(--fg2); font-size: 14px; line-height: 1.6; }
+  .card-body em { font-style: italic; }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .tag-blue { background: rgba(37,99,235,0.12); color: var(--accent); }
+  .tag-red { background: rgba(220,38,38,0.12); color: var(--danger); }
+  .tag-green { background: rgba(22,163,74,0.12); color: var(--positive); }
+  .tag-amber { background: rgba(245,158,11,0.12); color: var(--warning); }
+  .grid-3 { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media(min-width: 600px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+  .alert { border-left: 3px solid var(--danger); padding-left: 14px; margin: 16px 0; }
+  .alert-green { border-left-color: var(--positive); }
+  .alert-text { color: var(--fg2); font-size: 14px; }
+  .mono {
+    font-family: "SF Mono", "Fira Code", "JetBrains Mono", Consolas, monospace;
+    font-size: 13px;
+    background: var(--muted);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .mini { font-size: 13px; color: var(--fg3); margin-top: 6px; }
+  .failure { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .failure-icon {
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; flex-shrink: 0; margin-top: 2px;
+  }
+  .icon-red { background: rgba(220,38,38,0.12); color: var(--danger); }
+  .icon-amber { background: rgba(245,158,11,0.12); color: var(--warning); }
+  .icon-blue { background: rgba(37,99,235,0.12); color: var(--accent); }
+  .nav { display: flex; gap: 10px; margin-top: 28px; justify-content: center; }
+  .nav button {
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .nav button:hover { background: var(--muted); }
+  .nav button:disabled { opacity: 0.35; cursor: not-allowed; }
+  .dots { display: flex; gap: 8px; justify-content: center; margin-top: 14px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.2s; }
+  .dot.active { background: var(--fg2); }
+  .centered { text-align: center; }
+  .quote { font-size: 17px; font-weight: 500; line-height: 1.6; margin-bottom: 16px; }
+  .source { font-size: 13px; color: var(--fg3); }
+  .progress { font-size: 12px; color: var(--fg3); text-align: center; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="topbar">
+    <span style="font-size:13px;color:var(--fg3);">The DIO Terminology Paradox</span>
+    <a href="dio-terminology-paradox-text.html">Text version</a>
+  </div>
+
+  <!-- Slide 1 -->
+  <div class="slide active" data-slide="0">
+    <h1>The DIO Terminology Paradox</h1>
+    <p class="subtitle">When a framework designed to prevent identity collapse becomes its own stress test.</p>
+    <div class="card">
+      <div class="card-title">The paradox in one sentence</div>
+      <div class="card-body">
+        DIO prevents <span class="mono">identity collapse</span> — yet its own high-density terminology for three distinct ontologies creates exactly the <span class="mono">naming overlap</span>, <span class="mono">portfolio complexity</span>, and <span class="mono">AI hesitation</span> it warns against.
+      </div>
+    </div>
+    <div class="card" style="border-color:var(--danger);">
+      <div class="card-title" style="color:var(--danger);">Edge case status: confirmed</div>
+      <div class="card-body">
+        This is not a theoretical exercise. The conversation that produced this presentation is a live demonstration of DIO analyzing itself — and discovering its own vulnerability.
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide" data-slide="1">
+    <h2>Three ontologies. One name root. Zero disambiguation.</h2>
+    <p class="subtitle">Each is a discrete ontological plane. None shares the same referent.</p>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">ODI</span>
+        <div class="card-title">Ontology of Digital Identity</div>
+        <div class="card-body">Pure theory. Studies what digital identity <em>is</em> — its structure, persistence, boundaries, the relation between entity and representation.</div>
+        <div class="mini">Question: "What is DI?"</div>
+      </div>
+      <div class="card">
+        <span class="tag tag-red">Meta</span>
+        <div class="card-title">Ontology of DIO (the field)</div>
+        <div class="card-body">Meta-theory. Studies what the discipline of Digital Identity Optimization <em>is</em> — its methods, scope, relation to SEO, philosophy, brand.</div>
+        <div class="mini">Question: "What is DIO?"</div>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Functional</span>
+        <div class="card-title">DIO as ontological framework</div>
+        <div class="card-body">Praxis. DIO <em>functions</em> as the structure that maintains digital entity existence across systems — it behaves ontologically.</div>
+        <div class="mini">Question: "How does DIO maintain being?"</div>
+      </div>
+    </div>
+    <div class="alert">
+      <div class="alert-text">
+        All three share the token "DIO" and the semantic field "ontology". To an AI parser or a casual reader, they collapse into one low-confidence node.
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide" data-slide="2">
+    <h2>Failure modes mapped to DIO's own taxonomy</h2>
+    <p class="subtitle">The framework diagnoses itself — and finds every failure mode it prescribes for others.</p>
+    <div class="card">
+      <div class="failure">
+        <div class="failure-icon icon-red">1</div>
+        <div>
+          <div class="card-title">Entity disambiguation failure</div>
+          <div class="card-body">When someone cites "ontologie DIO", the referent is ambiguous. Is it ODI? Meta-ontology? Functional ontology? Without explicit tagging, the signal fragments.</div>
+        </div>
+      </div>
+      <div class="failure">
+        <div class="failure-icon icon-amber">2</div>
+        <div>
+          <div class="card-title">Fork confusion</div>
+          <div class="card-body">Each "ontology" is a conceptual descendant of the same root. But unlike OSS forks, they are not versioned or canonicalized. AI systems cannot distinguish origin from variant.</div>
+        </div>
+      </div>
+      <div class="failure">
+        <div class="failure-icon icon-blue">3</div>
+        <div>
+          <div class="card-title">AI hesitation</div>
+          <div class="card-body">An LLM parsing this conversation encounters three entities with overlapping identity vectors. Confidence drops. The system either merges them incorrectly or withholds recommendation entirely.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide" data-slide="3">
+    <h2>Resolution: DIO must eat its own dog food</h2>
+    <p class="subtitle">The framework cannot prescribe what it does not practice. The fix is structural, not cosmetic.</p>
+    <div class="card">
+      <div class="card-title">1. Canonical naming discipline</div>
+      <div class="card-body">
+        Each ontological plane needs an unambiguous, cross-platform identifier. Proposed: <span class="mono">ODI</span> (theory), <span class="mono">DIO-meta</span> (field ontology), <span class="mono">DIO-functional</span> (praxis). Never let "ontology of DIO" float without a qualifier.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">2. Explicit relational encoding</div>
+      <div class="card-body">
+        The three must be explicitly linked in a hierarchy: ODI (foundation) → DIO-meta (discipline) → DIO-functional (application). Without this graph, AI cannot traverse the relationship.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">3. Self-audit as proof of concept</div>
+      <div class="card-body">
+        This very conversation <em>is</em> the DIO audit. If DIO cannot maintain its own identity coherence, it has no authority to promise it for OSS, enterprise, or NGO. The paradox is the stress test.
+      </div>
+    </div>
+    <div class="alert alert-green">
+      <div class="alert-text" style="color:var(--fg);">
+        <strong>The lesson:</strong> Precision in terminology is not pedantry — it is ontological infrastructure. DIO demands it of others; it must demand it of itself.
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slide" data-slide="4">
+    <h2>Carved in stone: the DIO self-referential law</h2>
+    <p class="subtitle">A principle derived from the paradox, applicable to any entity-centric framework.</p>
+    <div class="card centered" style="padding: 32px; border-width: 2px;">
+      <div class="quote">
+        „Any system that manages entity identity<br>must first manage its own identity<br>with equal or greater rigor.<br><br>Terminology density without disambiguation<br>is not precision — it is identity collapse<br>wearing a mask of sophistication.“
+      </div>
+      <div class="source">— Derived from D. Beránek (2026), via live conversational stress test</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Why this matters</div>
+      <div class="card-body">
+        If DIO is to be a general model of digital entity persistence, it cannot exempt itself from its own rules. The moment it does, it becomes a marketing narrative rather than an infrastructure. This edge case is the proof that DIO is infrastructure — because it breaks when its infrastructure is neglected.
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+    <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="progress" id="progress">Slide 1 of 5</div>
+
+</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const dotsContainer = document.getElementById('dots');
+  const progress = document.getElementById('progress');
+
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsContainer.appendChild(d);
+  }
+
+  function update() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    document.getElementById('prevBtn').disabled = current === 0;
+    document.getElementById('nextBtn').disabled = current === total - 1;
+    progress.textContent = 'Slide ' + (current + 1) + ' of ' + total;
+  }
+
+  function changeSlide(dir) {
+    const next = current + dir;
+    if (next >= 0 && next < total) { current = next; update(); }
+  }
+
+  function goTo(idx) {
+    if (idx >= 0 && idx < total) { current = idx; update(); }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') changeSlide(1);
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+  });
+
+  update();
+</script>
+</body>
+</html>
