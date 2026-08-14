@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as follows."
+title: "The DIO Terminology Paradox"
+subtitle: "A Self-Audit of Digital Identity Optimization"
+type: presentation
+authors:
+  - family-names: "Beránek"
+    given-names: "Daniel"
+    orcid: "https://orcid.org/0009-0007-5114-399X"
+date-released: 2026-08-12
+url: "https://dan-beranek.github.io/dio-terminology-paradox/"
+repository-code: "https://github.com/dan-beranek/dio-terminology-paradox"
+license: "CC-BY-4.0"
