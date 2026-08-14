@@ -7,7 +7,7 @@ This repository contains a self-referential case study of Digital Identity Optim
 ## Read
 
 - [Presentation](./index.html)
-- [Text version](./text-version.html)
+- [Text version](./dio-terminology-paradox-text.html)
 
 ## Core finding
 
