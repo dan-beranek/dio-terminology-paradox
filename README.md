@@ -6,8 +6,8 @@ This repository contains a self-referential case study of Digital Identity Optim
 
 ## Read
 
-- [Presentation](./index.html)
-- [Text version](./dio-terminology-paradox-text.html)
+- [Presentation](https://dan-beranek.github.io/dio-terminology-paradox/)
+- [Text version](https://dan-beranek.github.io/dio-terminology-paradox/dio-terminology-paradox-text.html)
 
 ## Core finding
 
