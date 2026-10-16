@@ -1,5 +1,10 @@
 # The Digital Identity Optimization Terminology Paradox
 
+
+When a framework designed to prevent identity collapse becomes its own stress test.
+
+This repository contains a self-referential case study of Digital Identity Optimization (DIO). It examines how overlapping terminology across three distinct ontological planes can create ambiguity for people and AI systems.
+
 ---
 
 ## DIO/ODI — Vocabulary & Reference Model
@@ -11,9 +16,6 @@ A machine-readable vocabulary and a reference model for Digital Identity Optimiz
 
 ---
 
-When a framework designed to prevent identity collapse becomes its own stress test.
-
-This repository contains a self-referential case study of Digital Identity Optimization (DIO). It examines how overlapping terminology across three distinct ontological planes can create ambiguity for people and AI systems.
 
 ## Read
 
