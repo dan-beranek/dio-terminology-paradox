@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0.0",
+  "site": {
+    "repository": "dan-beranek/dio-terminology-paradox",
+    "origin": "https://dan-beranek.github.io/dio-terminology-paradox/"
+  },
+  "keyword_registry": {
+    "repository": "dan-beranek/dio-odi-reference-model",
+    "path": "metadata/keywords.json",
+    "registry_version": "2.11.0",
+    "status": "canonical-approved",
+    "sha256": "bd1c5f36b894329b1af65b3eea3905fdf8c2c05b6182a2bd11cdb16fce957114",
+    "source": "https://raw.githubusercontent.com/dan-beranek/dio-odi-reference-model/main/metadata/keywords.json",
+    "source_url": "https://raw.githubusercontent.com/dan-beranek/dio-odi-reference-model/main/metadata/keywords.json",
+    "snapshot_path": "metadata/keyword-registry.snapshot.json"
+  },
+  "artifacts": [
+    {
+      "profile_id": "terminology-paradox-presentation",
+      "status": "canonical-approved",
+      "scope": "derived-public-webpage",
+      "purpose": "Slide presentation documenting the self-referential DIO terminology paradox: overlapping names across three distinct ontological planes and the resulting interpretive ambiguity.",
+      "page": {
+        "page_key": "presentation",
+        "path": "index.html",
+        "url": "https://dan-beranek.github.io/dio-terminology-paradox/",
+        "entity_id": "https://dan-beranek.github.io/dio-terminology-paradox/#presentation",
+        "entity_type": null,
+        "entity_url": null
+      },
+      "chunk_selectors": {
+        "C0_identity_invariant": "all",
+        "C1_reconstruction_environments": [
+          "artificial intelligence",
+          "human observers"
+        ],
+        "C2_work_positioning": [
+          "DIO terminology case study",
+          "ontological disambiguation",
+          "ontology governance",
+          "self-referential framework stress test"
+        ],
+        "C3_reconstruction_mechanics": [
+          "semantic field"
+        ],
+        "C4_k6": "none",
+        "C5_failures_robustness": [
+          "Identity Collapse"
+        ],
+        "C6_machine_readable_representation": []
+      },
+      "resolved_keywords": [
+        "Digital Identity Optimization",
+        "DIO",
+        "Ontology of Digital Identity",
+        "ODI",
+        "digital identity",
+        "identity reconstruction",
+        "artificial intelligence",
+        "human observers",
+        "DIO terminology case study",
+        "ontological disambiguation",
+        "ontology governance",
+        "self-referential framework stress test",
+        "semantic field",
+        "Identity Collapse"
+      ],
+      "term_rationales": {
+        "artificial intelligence": "The presentation explicitly describes an AI parser and AI systems as readers that may collapse the three ontological planes into one low-confidence referent.",
+        "human observers": "The presentation also addresses the casual human reader, whose interpretation can be affected by the same naming overlap.",
+        "DIO terminology case study": "The page is a self-referential case study of ambiguity arising from DIO's own terminology.",
+        "ontological disambiguation": "The presentation distinguishes three separate ontological planes that share a name root but have different referents.",
+        "ontology governance": "The case study concerns naming discipline, canonical identifiers, and explicit relational encoding between ontology layers.",
+        "self-referential framework stress test": "The presentation treats DIO itself as the stress-test object for the identity and terminology principles it proposes.",
+        "semantic field": "The presentation explicitly discusses the shared semantic field in which the three distinct ontological planes are named.",
+        "Identity Collapse": "The presentation repeatedly describes the conflation of distinct ontological planes as identity collapse."
+      }
+    },
+    {
+      "profile_id": "terminology-paradox-text",
+      "status": "canonical-approved",
+      "scope": "derived-public-webpage",
+      "purpose": "Text version of the self-referential DIO terminology case study, preserving the presentation's distinctions between three ontological planes and their shared naming root.",
+      "page": {
+        "page_key": "text-version",
+        "path": "dio-terminology-paradox-text.html",
+        "url": "https://dan-beranek.github.io/dio-terminology-paradox/dio-terminology-paradox-text.html",
+        "entity_id": "https://dan-beranek.github.io/dio-terminology-paradox/#text-version",
+        "entity_type": null,
+        "entity_url": null
+      },
+      "chunk_selectors": {
+        "C0_identity_invariant": "all",
+        "C1_reconstruction_environments": [
+          "artificial intelligence",
+          "human observers"
+        ],
+        "C2_work_positioning": [
+          "DIO terminology case study",
+          "ontological disambiguation",
+          "ontology governance",
+          "self-referential framework stress test"
+        ],
+        "C3_reconstruction_mechanics": [
+          "semantic field"
+        ],
+        "C4_k6": "none",
+        "C5_failures_robustness": [
+          "Identity Collapse"
+        ],
+        "C6_machine_readable_representation": []
+      },
+      "resolved_keywords": [
+        "Digital Identity Optimization",
+        "DIO",
+        "Ontology of Digital Identity",
+        "ODI",
+        "digital identity",
+        "identity reconstruction",
+        "artificial intelligence",
+        "human observers",
+        "DIO terminology case study",
+        "ontological disambiguation",
+        "ontology governance",
+        "self-referential framework stress test",
+        "semantic field",
+        "Identity Collapse"
+      ],
+      "term_rationales": {
+        "artificial intelligence": "The presentation explicitly describes an AI parser and AI systems as readers that may collapse the three ontological planes into one low-confidence referent.",
+        "human observers": "The presentation also addresses the casual human reader, whose interpretation can be affected by the same naming overlap.",
+        "DIO terminology case study": "The page is a self-referential case study of ambiguity arising from DIO's own terminology.",
+        "ontological disambiguation": "The presentation distinguishes three separate ontological planes that share a name root but have different referents.",
+        "ontology governance": "The case study concerns naming discipline, canonical identifiers, and explicit relational encoding between ontology layers.",
+        "self-referential framework stress test": "The presentation treats DIO itself as the stress-test object for the identity and terminology principles it proposes.",
+        "semantic field": "The presentation explicitly discusses the shared semantic field in which the three distinct ontological planes are named.",
+        "Identity Collapse": "The presentation repeatedly describes the conflation of distinct ontological planes as identity collapse."
+      }
+    }
+  ]
+}
